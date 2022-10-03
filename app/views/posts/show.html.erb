@@ -1,0 +1,25 @@
+<%= image_tag @post.get_profile_image, size:'100x100' %>
+tag
+<%= @post.text %>
+<%= @post.created_at %>
+<% @post_tags.each do |tag| %>
+  <%=tag.name%>
+<% end %>
+いいね<%= render 'favorites/btn',post: @post %>
+コメント<%= @post.comments.count %>
+<%= image_tag @post.user.get_profile_image, size:'100x100' %>
+ユーザー名<%= @post.user.full_name %>
+<%= image_tag current_user.get_profile_image, size:'100x100' %>
+<%= form_with model:[@post,@comment,], local:true do |f| %>
+      <%#= render 'layouts/errors', obj: @user %>
+     <div class="form-group">
+         コメント
+        <%= f.text_field :text, class: "form-control-file  text" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit class: 'btn btn-success' %>
+      </div>
+<% end %>
+
+<%= render 'comments/index',post: @post %>

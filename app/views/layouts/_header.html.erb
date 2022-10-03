@@ -1,0 +1,21 @@
+<div class="container">
+  <div>
+    <a class="navbar-brand" href="/"><span>ALLEEAIDEA</span></a>
+    <% if user_signed_in? %>
+    投稿場所を探す
+    <%= image_tag current_user.get_profile_image, size:'100x100' %>
+    <%= current_user.last_name %>
+    <%= current_user.first_name %>
+    <%= current_user.id %>
+    <% end %>
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  </div>
+  <div>
+    <%= link_to "新着",  root_path %>
+    <%#= link_to "地図上のコンテンツ"_path %>
+    <%= link_to "投稿",  new_post_path %>
+    <%= link_to "お気に入り", favorites_index_path %>
+    <%= link_to "About", homes_about_path %>
+  </div>
+   
+</div>

@@ -1,0 +1,22 @@
+<table>
+  <tbody>
+      <% post.comments.each do |comment| %>
+      <tr>
+        
+        <td>
+          <%= link_to users_show_path(comment.user) do %>
+            <%= image_tag comment.user.get_profile_image, size:'50x50' %><br>
+            <%= comment.user.full_name %>
+          <% end %>
+        </td>
+        <td><%= comment.created_at %></td>
+        <td>
+          <% if comment.user == current_user %>
+            <%= link_to "Destroy", post_comment_path(post, comment), method: :delete, class: "btn-sm btn-danger pull-right" %>
+          <% end %>
+        </td>
+        <td><%= comment.text %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
